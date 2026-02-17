@@ -1,0 +1,6 @@
+
+{
+  "name": "PyHost Cloud - Professional Python Hosting",
+  "description": "A high-performance Python hosting platform featuring isolated Docker environments, persistent storage, real-time terminal access via xterm.js, and process management for 24/7 bots. Includes IDE and full shell access.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,32 @@
+
+version: '3.8'
+
+services:
+  # Main Management API
+  pyhost-api:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./projects:/app/projects
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=change_me_now
+    restart: always
+
+  # Database for users/projects
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: pyhost
+      POSTGRES_PASSWORD: pyhost_password
+      POSTGRES_DB: pyhost_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data:
